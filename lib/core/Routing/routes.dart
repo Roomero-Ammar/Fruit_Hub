@@ -5,3 +5,5 @@ class Routes {
   static const String signUpScreen = '/signUpScreen';
   static const String homeScreen = '/homeScreen';
 }
+
+// Context.push(Routes.SplashView);

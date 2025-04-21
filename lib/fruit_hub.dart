@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fruit_hub/core/helper_functions/app_router.dart';
-import 'package:fruit_hub/core/helper_functions/routes.dart';
+import 'package:fruit_hub/core/Routing/app_router.dart';
+
+import 'core/Routing/routes.dart';
 
 class FruitHub extends StatelessWidget {
    FruitHub({super.key});
