@@ -1,0 +1,50 @@
+dart run build_runner build --delete-conflicting-outputs
+
+# we use this commands to generate files with json_serializable , freezed
+________________________
+
+
+To Use Flutter localization after insall the package in yaml
+- then in main file write this down MaterialApp( :-
+
+ localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
+      locale: const Locale('ar'),
+---------------
+  Write in the search bar in VS Code:
+# > Flutter Intl : Initialize
+# we should add (generate : true) in yaml down flutter:
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+----------
+flutter gen-l10n
+# we use this commands to generate localization files after insall extention from VS Code calls "Flutter Intl"
+          ___________________________________________
+/////    -Another Way to use localization in flutter-  ////////
+                       >>Better Way<<
+          ___________________________________________
+
+   >    install this package in yaml file: flutter pub add intl_utils
+      
+      > we don't write additional code in main file we just create new main file (l10n.yaml) and write this inside it:-
+
+arb_dir: lib/l10n
+template_arb_file: intl_en.arb
+output_dir: lib/generated
+
+# then we write this command in terminal:
+
+flutter pub run intl_utils:generate
+
+to add local language file we write this in search bar after download the extention of "flutter intl"
+
+> Flutter Intl : Add Local
+"en"
