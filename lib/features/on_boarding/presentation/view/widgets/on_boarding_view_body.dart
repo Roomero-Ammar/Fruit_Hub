@@ -21,16 +21,16 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
   void initState() {
     pageController = PageController();
 
-    pageController.addListener(()
-    {
+    pageController.addListener(() {
       currerntPage = pageController.page!.round();
-    },
-    );
+      setState(() {
+        // TO Update the Ui
+      });
+    });
     super.initState();
   }
 
   @override
-
   void dispose() {
     pageController.dispose();
     super.dispose();
@@ -44,9 +44,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
           // يمكنك تحديد ارتفاع هنا
           SizedBox(
             height: 650.h, // تحديد ارتفاع مناسب
-            child: OnBoardingPageView(
-              pageController: pageController,
-            ),
+            child: OnBoardingPageView(pageController: pageController),
           ),
           // Expanded(child: OnBoardingPageView()), and remove SingleChildScrollView >> If you want the page not scroll
           DotsIndicator(
@@ -57,9 +55,15 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             ),
           ),
           verticalSpace(29),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: kHorizintalPadding.h),
-            child: CustomButton(onPressed: () {}, text: "ابدأ الأن"),
+          Visibility(
+            visible: currerntPage == 1 ? true : false,
+            maintainSize: true,
+            maintainState: true,
+            maintainAnimation: true,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: kHorizintalPadding.h),
+              child: CustomButton(onPressed: () {}, text: "ابدأ الأن"),
+            ),
           ),
           verticalSpace(43),
         ],
