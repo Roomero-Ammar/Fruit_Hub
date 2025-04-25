@@ -11,13 +11,14 @@ class PageViewItem extends StatelessWidget {
       required this.backgroundImage,
       required this.subtitle,
       required this.title, 
-      required this.controller,
+      required this.controller, required this.isVisible,
      });
 
   final String image, backgroundImage;
   final String subtitle;
   final Widget title;
   final PageController controller;
+  final bool isVisible ;
 
   @override
   Widget build(BuildContext context) {
@@ -45,17 +46,20 @@ class PageViewItem extends StatelessWidget {
           Positioned(
   top: 30.h,
   right: 16.w,
-  child: GestureDetector(
-    onTap: () {
-      controller.nextPage(
-        duration: const Duration(milliseconds: 400),
-        curve: Curves.easeInOut,
-      );
-    },
-    child: Text(
-      'تخطى',
-      style: TextStyles.regular16.copyWith(
-        color: const Color(0xFF949D9E),
+  child: Visibility(
+    visible: isVisible,
+    child: GestureDetector(
+      onTap: () {
+        controller.nextPage(
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.easeInOut,
+        );
+      },
+      child: Text(
+        'تخطى',
+        style: TextStyles.regular16.copyWith(
+          color: const Color(0xFF949D9E),
+        ),
       ),
     ),
   ),

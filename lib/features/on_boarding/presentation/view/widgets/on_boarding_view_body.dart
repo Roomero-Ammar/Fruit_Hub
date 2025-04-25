@@ -7,8 +7,34 @@ import 'package:fruit_hub/core/utils/app_colors.dart';
 import 'package:fruit_hub/core/widgets/custom_button.dart';
 import 'package:fruit_hub/features/on_boarding/presentation/view/widgets/on_boarding_page_view.dart';
 
-class OnBoardingViewBody extends StatelessWidget {
+class OnBoardingViewBody extends StatefulWidget {
   const OnBoardingViewBody({super.key});
+
+  @override
+  State<OnBoardingViewBody> createState() => _OnBoardingViewBodyState();
+}
+
+class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
+  late PageController pageController;
+  var currerntPage = 0;
+  @override
+  void initState() {
+    pageController = PageController();
+
+    pageController.addListener(()
+    {
+      currerntPage = pageController.page!.round();
+    },
+    );
+    super.initState();
+  }
+
+  @override
+
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +44,9 @@ class OnBoardingViewBody extends StatelessWidget {
           // يمكنك تحديد ارتفاع هنا
           SizedBox(
             height: 650.h, // تحديد ارتفاع مناسب
-            child: OnBoardingPageView(),
+            child: OnBoardingPageView(
+              pageController: pageController,
+            ),
           ),
           // Expanded(child: OnBoardingPageView()), and remove SingleChildScrollView >> If you want the page not scroll
           DotsIndicator(
@@ -26,12 +54,12 @@ class OnBoardingViewBody extends StatelessWidget {
             decorator: DotsDecorator(
               activeColor: AppColors.primaryColor,
               color: AppColors.primaryColor.withValues(alpha: 0.5),
-              ),
+            ),
           ),
           verticalSpace(29),
           Padding(
-            padding:  EdgeInsets.symmetric(horizontal: kHorizintalPadding.h),
-            child: CustomButton(onPressed: (){},text: "ابدأ الأن",),
+            padding: EdgeInsets.symmetric(horizontal: kHorizintalPadding.h),
+            child: CustomButton(onPressed: () {}, text: "ابدأ الأن"),
           ),
           verticalSpace(43),
         ],

@@ -4,30 +4,20 @@ import 'package:fruit_hub/core/utils/app_images.dart';
 import 'package:fruit_hub/core/utils/app_text_styles.dart';
 import 'package:fruit_hub/features/on_boarding/presentation/view/widgets/page_view_item.dart';
 
-class OnBoardingPageView extends StatefulWidget {
-  const OnBoardingPageView({super.key});
+class OnBoardingPageView extends StatelessWidget {
+  const OnBoardingPageView({super.key, required this.pageController});
 
-  @override
-  State<OnBoardingPageView> createState() => _OnBoardingPageViewState();
-}
+    final PageController pageController;
 
-class _OnBoardingPageViewState extends State<OnBoardingPageView> {
-  
-    final PageController _pageController = PageController();
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return PageView(
-      controller: _pageController,
+      controller: pageController,
       children: [
         PageViewItem(
-          controller: _pageController,
+          isVisible: (pageController.hasClients? pageController.page!.round() : 0) == 0,
+          controller: pageController,
           image: Assets.imagesPageViewItem1Image,
           backgroundImage: Assets.imagesPageViewItem1BackgroundImage,
           subtitle:
@@ -63,7 +53,8 @@ children: [
         ),
       
              PageViewItem(
-              controller: _pageController,
+              isVisible: (pageController.hasClients? pageController.page!.round() : 0) != 0,
+              controller: pageController,
           image: Assets.imagesPageViewItem2Image,
           backgroundImage: Assets.imagesPageViewItem2Image,
           subtitle:
@@ -91,3 +82,4 @@ children: [
     );
   }
 }
+
