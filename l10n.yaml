@@ -1,4 +1,0 @@
-arb_dir: lib/l10n
-template_arb_file: intl_en.arb
-output_dir: lib/generated
-
