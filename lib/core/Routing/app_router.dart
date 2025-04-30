@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_hub/features/auth/presentation/views/login_view.dart';
 import 'package:fruit_hub/features/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:fruit_hub/features/splash/presentation/views/splash_view.dart';
 
@@ -10,6 +11,10 @@ switch (settings.name) {
       return MaterialPageRoute(builder: (context) => const SplashView());
     case Routes.OnBoardingView:
       return MaterialPageRoute(builder: (context) => const OnBoardingView());
+      case Routes.loginView:
+      return MaterialPageRoute(builder: (context) => const LoginView());
+  
+    
     case '/signup':
       return MaterialPageRoute(builder: (context) => const Placeholder());
 default : 
