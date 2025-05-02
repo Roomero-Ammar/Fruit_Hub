@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_hub/core/Routing/routes.dart';
+import 'package:fruit_hub/core/constants/constants.dart';
 import 'package:fruit_hub/core/helper_functions/extentsions.dart';
+import 'package:fruit_hub/core/services/shared_preferences_singleton.dart';
 import 'package:fruit_hub/core/utils/app_images.dart';
 import 'dart:async';
 
@@ -27,26 +29,27 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SvgPicture.asset(Assets.imagesPlant),
-          ],
+          children: [SvgPicture.asset(Assets.imagesPlant)],
         ),
         SvgPicture.asset(Assets.imagesLogo),
-        SvgPicture.asset(
-          Assets.imagesSplashBottom,
-          fit: BoxFit.fill,
-        ),
+        SvgPicture.asset(Assets.imagesSplashBottom, fit: BoxFit.fill),
       ],
     );
   }
 
   void excuteNaviagtion() {
+    // Check if the onboarding view has been seen
+    bool isOnBoardingViewSeen = Prefs.getBool(kIsOnBoardingViewSeen);
     // Use Future.delayed to handle the navigation delay
     Future.delayed(const Duration(seconds: 2), () {
       // Check if the widget is still mounted to prevent errors
       if (mounted) {
         // If we use Extention and Routes :
-        context.pushNamed(Routes.OnBoardingView);
+        if (isOnBoardingViewSeen) {
+          context.pushNamed(Routes.loginView);
+        } else {
+          context.pushNamed(Routes.OnBoardingView);
+        }
         // If we use Routes without Extention :
         // Navigator.pushReplacementNamed(context, Routes.OnBoardingView);
       }

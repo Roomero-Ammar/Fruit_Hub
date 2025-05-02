@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_hub/core/constants/constants.dart';
 import 'package:fruit_hub/core/helper_functions/extentsions.dart';
 import 'package:fruit_hub/core/helper_functions/spacing.dart';
+import 'package:fruit_hub/core/services/shared_preferences_singleton.dart';
 import 'package:fruit_hub/core/utils/app_colors.dart';
 import 'package:fruit_hub/core/widgets/custom_button.dart';
 import 'package:fruit_hub/features/on_boarding/presentation/view/widgets/on_boarding_page_view.dart';
@@ -70,6 +71,8 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
               padding: EdgeInsets.symmetric(horizontal: kHorizintalPadding.h),
               child: CustomButton(
                 onPressed: () {
+                  // Check if onBoarding is seen or not
+                  Prefs.setBool(kIsOnBoardingViewSeen, true);
                   // Navigate to LoginView
                   context.pushNamed(Routes.loginView);
                 },

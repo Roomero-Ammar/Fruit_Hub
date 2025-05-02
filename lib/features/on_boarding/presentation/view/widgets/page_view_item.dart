@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fruit_hub/core/constants/constants.dart';
 import 'package:fruit_hub/core/helper_functions/extentsions.dart';
 import 'package:fruit_hub/core/utils/app_images.dart';
 import 'package:fruit_hub/core/utils/app_text_styles.dart';
 
 import '../../../../../core/Routing/routes.dart';
+import '../../../../../core/services/shared_preferences_singleton.dart';
 class PageViewItem extends StatelessWidget {
   const PageViewItem(
       {super.key,
@@ -58,7 +60,9 @@ class PageViewItem extends StatelessWidget {
         //   duration: const Duration(milliseconds: 400),
         //   curve: Curves.easeInOut,
         // );
-        
+
+        // Check if onBoarding is seen or not
+        Prefs.setBool(kIsOnBoardingViewSeen, true);
         // Navigate to LoginView
         context.pushNamed(Routes.loginView);
         
