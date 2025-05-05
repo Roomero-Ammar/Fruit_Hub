@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_hub/core/Routing/app_router.dart';
 import 'package:fruit_hub/core/utils/app_colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'core/Routing/routes.dart';
 
@@ -17,7 +18,8 @@ final AppRouter appRouter = AppRouter();
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          fontFamily: 'Cairo',
+          textTheme: GoogleFonts.cairoTextTheme(Theme.of(context).textTheme),
+          // fontFamily: 'Cairo',
       colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       primaryColor: AppColors.primaryColor,
         ),
