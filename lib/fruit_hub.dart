@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_hub/core/Routing/app_router.dart';
+import 'package:fruit_hub/core/utils/app_colors.dart';
 
 import 'core/Routing/routes.dart';
 
@@ -18,6 +19,7 @@ final AppRouter appRouter = AppRouter();
         theme: ThemeData(
           fontFamily: 'Cairo',
       colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      primaryColor: AppColors.primaryColor,
         ),
         debugShowCheckedModeBanner: false,
         initialRoute: Routes.SplashView,
