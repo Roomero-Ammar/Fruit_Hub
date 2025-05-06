@@ -5,6 +5,7 @@ import 'package:fruit_hub/core/widgets/custom_app_bar_widget.dart';
 import 'package:fruit_hub/core/widgets/custom_button.dart';
 import 'package:fruit_hub/core/widgets/custom_text_field.dart';
 import 'package:fruit_hub/core/widgets/password_field.dart';
+import 'package:fruit_hub/features/auth/presentation/views/widgets/or_divider.dart';
 
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/utils/app_colors.dart';
@@ -48,7 +49,8 @@ class LoginViewBody extends StatelessWidget {
                 verticalSpace(33),
                 const DontHaveAnAccountWidget(),
                 verticalSpace(33),
-
+                const OrDivider(),
+                verticalSpace(16),
           ],
         ),
       ),
