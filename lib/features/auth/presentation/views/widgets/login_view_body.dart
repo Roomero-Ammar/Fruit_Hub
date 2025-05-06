@@ -9,8 +9,10 @@ import 'package:fruit_hub/features/auth/presentation/views/widgets/or_divider.da
 
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/app_images.dart';
 import '../../../../../core/utils/app_text_styles.dart';
 import 'dont_have_an_account_widget.dart';
+import 'social_login_button.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});
@@ -51,6 +53,29 @@ class LoginViewBody extends StatelessWidget {
                 verticalSpace(33),
                 const OrDivider(),
                 verticalSpace(16),
+                  SocialLoginButton(
+                onPressed: () {
+                  
+                },
+                image: Assets.imagesGoogleIcon,
+                title: 'تسجيل بواسطة جوجل',
+              ),
+              verticalSpace(16),
+               SocialLoginButton(
+                onPressed: () {
+                  
+                },
+                image: Assets.imagesApplIcon,
+                 title: 'تسجيل بواسطة أبل',
+              ),
+              verticalSpace(16),
+               SocialLoginButton(
+                onPressed: () {
+                  
+                },
+                image: Assets.imagesFacebookIcon,
+                title: 'تسجيل بواسطة فيسبوك',
+              ),
           ],
         ),
       ),
