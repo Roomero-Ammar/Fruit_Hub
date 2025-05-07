@@ -19,11 +19,9 @@ class LoginViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: kHorizintalPadding,
-      ),
-      child: SingleChildScrollView(
+   return  SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: kHorizintalPadding),
         child: Column(
           children: [
             verticalSpace(24),
