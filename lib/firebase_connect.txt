@@ -1,0 +1,9 @@
+// Steps to connect firebase to flutter app :-
+
+- Create the project in firebase console 
+
+// Write this commands in terminal //  
+
+1/ dart pub global activate flutterfire_cli
+
+2/ flutterfire configure
