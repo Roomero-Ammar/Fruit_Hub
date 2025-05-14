@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit_hub/core/widgets/build_show_bar.dart';
 import 'package:fruit_hub/core/widgets/custom_show_bar.dart';
 
 import '../../../../../core/constants/constants.dart';
@@ -58,10 +59,11 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                     },
               ),
               verticalSpace(16),
-              TermsAndConditionsWidget(onChanged: (value) {}),
+              TermsAndConditionsWidget(onChanged: (value) {isTermsAccepted = value;},),
               verticalSpace(30),
               CustomButton(
                 onPressed: () {
+                  print("isTermsAccepted");
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
                     if (isTermsAccepted) {
@@ -73,7 +75,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                             userName,
                           );
                     } else {
-                      CustomShowBar(message: 'يجب عليك الموافقة على الشروط والإحكام');
+                      showBar(context,'يجب عليك الموافقة على الشروط والإحكام');
                     }
                   } else {
                     setState(() {
