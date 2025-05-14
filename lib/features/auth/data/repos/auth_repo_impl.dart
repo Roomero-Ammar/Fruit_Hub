@@ -22,7 +22,7 @@ final FirebaseAuthService firebaseAuthService;
 } on CustomException catch (e) {
    return Left(ServerFailure(e.message));
 }catch (e) {
-   return Left(ServerFailure('An Error occured. Please try again.'));
+   return Left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.',));
   }
   }
 }
