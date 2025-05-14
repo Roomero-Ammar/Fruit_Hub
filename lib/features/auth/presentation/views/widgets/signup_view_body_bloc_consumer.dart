@@ -4,8 +4,8 @@ import 'package:fruit_hub/features/auth/presentation/views/widgets/signup_view_b
 
 import '../../cubits/signup_cubit/cubit/signup_cubit.dart';
 
-class SignupViewBlocConsumer extends StatelessWidget {
-  const SignupViewBlocConsumer({
+class SignupViewBodyBlocConsumer extends StatelessWidget {
+  const SignupViewBodyBlocConsumer({
     super.key,
   });
 
