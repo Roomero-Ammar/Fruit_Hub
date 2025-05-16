@@ -20,8 +20,7 @@ class SignupViewBody extends StatefulWidget {
 }
 
 class _SignupViewBodyState extends State<SignupViewBody> {
-
-  final GlobalKey <FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   // String? email, userName, password;
 
@@ -38,28 +37,33 @@ class _SignupViewBodyState extends State<SignupViewBody> {
           child: Column(
             children: [
               verticalSpace(24),
-               CustomTextFormField(
-                    onSaved: (value) {
-                      userName = value!;
-                    },
-                    hintText: 'الاسم كامل',
-                    textInputType: TextInputType.name),
+              CustomTextFormField(
+                onSaved: (value) {
+                  userName = value!;
+                },
+                hintText: 'الاسم كامل',
+                textInputType: TextInputType.name,
+              ),
               verticalSpace(16),
               CustomTextFormField(
                 onSaved: (value) {
-                      email = value!;
-                    },
+                  email = value!;
+                },
                 hintText: 'البريد الإلكتروني',
                 textInputType: TextInputType.emailAddress,
               ),
               verticalSpace(16),
               PasswordField(
                 onSaved: (value) {
-                      password = value!;
-                    },
+                  password = value!;
+                },
               ),
               verticalSpace(16),
-              TermsAndConditionsWidget(onChanged: (value) {isTermsAccepted = value;},),
+              TermsAndConditionsWidget(
+                onChanged: (value) {
+                  isTermsAccepted = value;
+                },
+              ),
               verticalSpace(30),
               CustomButton(
                 onPressed: () {
@@ -67,6 +71,8 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
                     if (isTermsAccepted) {
+
+
                       context
                           .read<SignupCubit>()
                           .createUserWithEmailAndPassword(
@@ -74,8 +80,10 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                             password,
                             userName,
                           );
-                    } else {
-                      showBar(context,'يجب عليك الموافقة على الشروط والإحكام');
+                    } 
+                    
+                    else {
+                      showBar(context, 'يجب عليك الموافقة على الشروط والإحكام');
                     }
                   } else {
                     setState(() {
