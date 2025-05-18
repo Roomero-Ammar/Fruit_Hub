@@ -12,4 +12,12 @@ abstract class AuthRepo {
     String password,
     String name,
   );
+
+  /// Signs in the user with the given [email] and [password].
+  ///
+  /// Returns a [UserEntity] on success, or a [Failure] on failure.
+  Future<Either<Failure,UserEntity>> signInWithEmailAndPassword(
+    String email,
+    String password,
+  );
 }
