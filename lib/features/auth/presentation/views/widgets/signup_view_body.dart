@@ -8,7 +8,7 @@ import '../../../../../core/helper_functions/spacing.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_text_field.dart';
 import '../../../../../core/widgets/password_field.dart';
-import '../../cubits/signup_cubit/cubit/signup_cubit.dart';
+import '../../cubits/signup_cubit/signup_cubit.dart';
 import 'have_an_account_widget.dart';
 import 'terms_and_conditions.dart';
 

@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../domain/entites/user_entity.dart';
-import '../../../../domain/repos/auth_repo.dart';
+import '../../../domain/entites/user_entity.dart';
+import '../../../domain/repos/auth_repo.dart';
 
 part 'signup_state.dart';
 
