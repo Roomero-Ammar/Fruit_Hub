@@ -11,6 +11,13 @@ class SignupCubit extends Cubit<SignupState> {
 
   final AuthRepo authRepo;
 
+
+  /// Creates a new user with the given email, password and name using the provided [AuthRepo].
+  ///
+  /// Emits [SignupLoading] while waiting for the operation to complete.
+  ///
+  /// If successful, it emits [SignupSuccess] with the created user entity.
+  /// If not, it emits [SignupFailure] with a message describing what went wrong.
   Future<void> createUserWithEmailAndPassword(
       String email, String password, String name) async {
     emit(SignupLoading());
