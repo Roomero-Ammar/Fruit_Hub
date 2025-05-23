@@ -4,6 +4,7 @@ import 'package:fruit_hub/features/auth/presentation/views/widgets/signup_view_b
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import '../../../../../core/widgets/build_show_bar.dart';
+import '../../../../../core/widgets/custom_progress_hud.dart';
 import '../../cubits/signup_cubit/signup_cubit.dart';
 
 class SignupViewBodyBlocConsumer extends StatelessWidget {
@@ -22,9 +23,14 @@ if (state is SignupSuccess) {
           showBar(context, state.message);
         }      },
       builder: (context, state) {
-        return ModalProgressHUD(
-          inAsyncCall: state is SignupLoading ? true:false,
-          child: SignupViewBody(),);
+         return CustomProgressHud(
+          isLoading: state is SignupLoading ? true : false,
+          child: const SignupViewBody(),
+        );
+        // return ModalProgressHUD(
+        //   inAsyncCall: state is SignupLoading ? true:false,
+        //   child: SignupViewBody(),
+        //   );
       },
     );
   }
