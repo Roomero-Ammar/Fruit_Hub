@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub/core/widgets/custom_app_bar.dart';
+import 'package:fruit_hub/features/auth/presentation/views/widgets/login_view_body_bloc_consumer.dart';
 
 import '../../../../core/services/get_it_service.dart';
 import '../../domain/repos/auth_repo.dart';
@@ -16,7 +17,7 @@ class LoginView extends StatelessWidget {
       create: (context) => SigninCubit(getIt.get<AuthRepo>()),
       child: Scaffold(
           appBar: buildAppBar(context, title: "تسجيل الدخول", showBackButton: true,showNotification: false),
-          body: LoginViewBody(),
+          body: LoginViewBodyBlocConsumer(),
         ),
     );
   }
