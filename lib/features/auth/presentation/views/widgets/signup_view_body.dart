@@ -102,3 +102,17 @@ class _SignupViewBodyState extends State<SignupViewBody> {
     );
   }
 }
+
+// What is autovalidateMode?
+// autovalidateMode is a property on a Form that specifies when fields should be automatically validated.
+
+// Possible values ​​for autovalidateMode:
+
+// 1. AutovalidateMode.disabled:
+// Validation is disabled. You must manually call validate() to validate the form.
+
+// 2. AutovalidateMode.always:
+// Fields will be automatically validated each time the form is created. This means errors will be immediately displayed upon data entry.
+
+// 3. AutovalidateMode.onUserInteraction:
+// Fields will only be validated after the user interacts with any field (such as clicking or typing). This option is convenient to avoid error messages before the user attempts to enter any data.
