@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruit_hub/core/widgets/build_show_error_bar.dart';
+import 'package:fruit_hub/core/widgets/build_show_bar.dart';
 import 'package:fruit_hub/core/widgets/custom_show_bar.dart';
 
 import '../../../../../core/constants/constants.dart';
