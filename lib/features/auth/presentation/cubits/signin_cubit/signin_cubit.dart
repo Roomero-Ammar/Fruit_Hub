@@ -19,8 +19,8 @@ class SigninCubit extends Cubit<SigninState> {
     emit(SigninLoading());
     final result = await authRepo.signInWithEmailAndPassword(email, password);
     result.fold(
-      (failure) => SigninFailure(message: failure.message),
-      (userEntity) => SigninSuccess(userEntity: userEntity),
+      (failure) => emit(SigninFailure(message: failure.message)),
+      (userEntity) => emit(SigninSuccess(userEntity: userEntity)),
     );
   }
 }
