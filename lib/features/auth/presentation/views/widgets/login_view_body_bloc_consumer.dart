@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../../core/widgets/build_show_bar.dart';
+import 'package:fruit_hub/core/widgets/build_show_bar.dart';
 import '../../../../../core/widgets/custom_progress_hud.dart';
 import '../../cubits/signin_cubit/signin_cubit.dart';
 import 'login_view_body.dart';
