@@ -1,0 +1,28 @@
+> After connect you project with firebase console 
+https://console.firebase.google.com
+
+Google :
+1/ add new provider (active google choice) 
+ -> authentication -> sign-in method -> google -> enable -> choose default google account
+2/ from project setting -> Add fingerprint -> add new Certificate fingerprint
+to know the Sha1 and Sha256 fingerprint of your app
+open this path of the android folder of your app as:
+E:\Futter Apps\fruit_hub\android
+in this path click and write "cmd" to switch to command line
+then write this command to get the fingerprint:
+>> gradlew signinReport 
+
+______________________
+> Task :app:signingReport
+Variant: debug
+Config: debug
+Store: C:\Users\HIGH SOFT\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: E3:90:7C:11:D7:E6:60:5F:A6:D4:B5:68:AD:B3:91:12
+SHA1: 94:DB:D6:52:81:1C:38:6D:22:2F:D9:96:E7:60:E5:DB:5C:EB:4D:41
+SHA-256: 39:9F:F6:83:3F:28:34:06:A5:71:6C:82:40:E0:64:2D:EF:A4:49:7B:54:DE:10:F8:0D:AC:28:23:52:1A:22:46
+Valid until: Tuesday, February 11, 2053
+______________________
+we need only the SHA1 : 94:DB:D6:52:81:1C:38:6D:22:2F:D9:96:E7:60:E5:DB:5C:EB:4D:41
+
+write it and click save 
