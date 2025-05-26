@@ -75,4 +75,34 @@ class AuthRepoImpl extends AuthRepo {
       return Left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
     }
   }
+//----------------------------------------------------------------------//
+  
+  @override
+  /////////////////[signInWithGoogle]/////////////////
+  
+  /// Returns a [Right] with a [UserEntity] if the operation is successful, or a
+  /// [Left] with a [Failure] if not. If a [CustomException] is thrown, it will
+  /// be converted to a [ServerFailure] and returned as a [Left].
+  /// Any other error will be converted to a [ServerFailure] with a default message and
+  /// returned as a [Left].
+  
+ 
+  Future<Either<Failure, UserEntity>> signinWithGoogle() async {
+    try {
+      var user = await firebaseAuthService.signInWithGoogle();
+      return Right(UserModel.fromFirebaseUser(user));
+    } 
+    // [we don't need to write this custom exception]
+    on CustomException catch (e) {
+      return Left(ServerFailure(e.message));
+    } 
+    //
+    catch (e) {
+      log(
+        "Exception in AuthRepoImpl.signupWithGoogle: ${e.toString()}",
+      );
+      return Left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
+    }
+  }
+  
 }
