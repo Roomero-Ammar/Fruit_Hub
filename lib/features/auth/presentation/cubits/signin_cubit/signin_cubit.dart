@@ -23,4 +23,19 @@ class SigninCubit extends Cubit<SigninState> {
       (userEntity) => emit(SigninSuccess(userEntity: userEntity)),
     );
   }
+  /// Signs in a user with Google using Firebase Authentication.
+  ///
+  /// If successful, it emits a [SigninSuccess] state with the signed in user.
+  /// If not, it emits a [SigninFailure] state with a message describing what went wrong.
+  ///
+  /// See [AuthRepo.signinWithGoogle] for possible exceptions that can be thrown.
+// This is sign in method or func ? answer : it's a method
+  Future<void> signinWithGoogle() async {
+    emit(SigninLoading());
+    var result = await authRepo.signinWithGoogle();
+    result.fold(
+      (failure) => emit(SigninFailure(message: failure.message)),
+      (userEntity) => emit(SigninSuccess(userEntity: userEntity)),
+    );
+  }
 }
