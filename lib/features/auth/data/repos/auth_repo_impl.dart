@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer'; // responible for logging errors "log"
 
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruit_hub/core/errors/exceptions.dart';
 import 'package:fruit_hub/core/errors/failures.dart';
 import '../../../../core/services/firebase_auth_service.dart'; // [Our Back-end]
@@ -102,6 +103,28 @@ class AuthRepoImpl extends AuthRepo {
         "Exception in AuthRepoImpl.signupWithGoogle: ${e.toString()}",
       );
       return Left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
+    }
+  }
+  
+  @override
+    /////////////////[signUpWithFacebook]/////////////////
+  Future<Either<Failure, UserEntity>> signinWithFacebook() async {
+    User? user;
+    try {
+      user = await firebaseAuthService.signInWithFacebook();
+      var userEntity = UserModel.fromFirebaseUser(user);
+      
+      return right(userEntity);
+    } catch (e) {
+     
+      log(
+        'Exception in AuthRepoImpl.createUserWithEmailAndPassword: ${e.toString()}',
+      );
+      return left(
+        ServerFailure(
+          'حدث خطأ ما. الرجاء المحاولة مرة اخرى.',
+        ),
+      );
     }
   }
   
