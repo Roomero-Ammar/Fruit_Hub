@@ -26,3 +26,31 @@ ______________________
 we need only the SHA1 : 94:DB:D6:52:81:1C:38:6D:22:2F:D9:96:E7:60:E5:DB:5C:EB:4D:41
 
 write it and click save 
+
+
+
+
+
+
+
+
+
+
+
+allow the user to add data (read , write) >> 
+ 1/ we need to go to firestore databases in firebase console.
+
+ 2/ we need to change this :
+
+ rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+        ///
+      THIS LINE 
+      FROM: "allow read, write: if false;" >>TO: "allow read, write: if request.auth != null;"
+       ///
+    }
+  }
+}
