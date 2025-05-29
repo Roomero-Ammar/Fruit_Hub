@@ -40,7 +40,7 @@ class AuthRepoImpl extends AuthRepo {
         password,
       );
       var userEntity = UserModel.fromFirebaseUser(user);
-      await addUserData(user: userEntity);
+      await addUserData(user: userEntity); // it's responsible for add user data to database after create user.
       return Right(userEntity);
     } on CustomException catch (e) {
       log(
@@ -123,7 +123,7 @@ class AuthRepoImpl extends AuthRepo {
       return left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
     }
   }
-
+ // this method is used to add user data to the database after signup.
   @override
   Future addUserData({required UserEntity user}) async {
     await databaseService.addData(
