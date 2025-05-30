@@ -41,7 +41,12 @@ class AuthRepoImpl extends AuthRepo {
         email,
         password,
       );
-      var userEntity = UserModel.fromFirebaseUser(user);
+      // var userEntity = UserModel.fromFirebaseUser(user);
+
+
+      // To make sure that the user name (uid) will be stored.
+            var userEntity = UserEntity(name: name, email: email, uId: user.uid);
+
       await addUserData(user: userEntity); // it's responsible for add user data to database after create user.
       return Right(userEntity);
     } on CustomException catch (e) {
