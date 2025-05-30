@@ -34,6 +34,8 @@ class AuthRepoImpl extends AuthRepo {
     String password,
     String name,
   ) async {
+   User? user;
+
     try {
       var user = await firebaseAuthService.createUserWithEmailAndPassword(
         email,
@@ -43,11 +45,17 @@ class AuthRepoImpl extends AuthRepo {
       await addUserData(user: userEntity); // it's responsible for add user data to database after create user.
       return Right(userEntity);
     } on CustomException catch (e) {
+      if (user != null) {
+        await firebaseAuthService.deleteUser();
+      }
       log(
         "Exception in AuthRepoImpl.createUserWithEmailAndPassword: ${e.toString()}",
       );
       return Left(ServerFailure(e.message));
     } catch (e) {
+      if (user != null) {
+        await firebaseAuthService.deleteUser();
+      }
       return Left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
     }
   }

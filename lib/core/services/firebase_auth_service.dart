@@ -159,4 +159,8 @@ Future<User> signInWithEmailAndPassword(
     final digest = sha256.convert(bytes);
     return digest.toString();
   }
+ /// This method is used to delete the user from the firebase.
+  Future deleteUser() async {
+    await FirebaseAuth.instance.currentUser!.delete();
+  }
 }
