@@ -37,7 +37,13 @@ class AuthRepoImpl extends AuthRepo {
    User? user;
 
     try {
-      var user = await firebaseAuthService.createUserWithEmailAndPassword(
+     // ❌Don't write >> var user = ..... 
+     //  var user = await firebaseAuthService.createUserWithEmailAndPassword(
+
+     // because Define a new variable named "user" inside the block, which hides the outer variable.
+     
+     // ✅ write >> user = ..... 
+       user = await firebaseAuthService.createUserWithEmailAndPassword(
         email,
         password,
       );
@@ -139,6 +145,8 @@ class AuthRepoImpl extends AuthRepo {
  // this method is used to add user data to the database after signup.
   @override
   Future addUserData({required UserEntity user}) async {
+    // To test that it's work or not >> use this line :
+    // throw CustomException(message: "Error message");
     await databaseService.addData(
       path: BackendEndpoint.addUserData,
       data: user.toMap(),
